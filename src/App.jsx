@@ -1,14 +1,25 @@
-import './App.css'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Header from './Header.jsx';
+import Footer from './Footer.jsx';
+import './App.css';
+import LoginScreen from './LoginScreen';
+import ProductsScreen from './ProductsScreen';
+import ProductDetailsScreen from './ProductDetailsScreen';
+import CheckoutScreen from './CheckoutScreen';
 
-function App() {
-
+const App = () => {
   return (
-    <>
-     <h1>Teste</h1>
-     <h2>Teste 2</h2>
-     <h3>teste 3</h3> 
-    </>
-  )
-}
+    <Router>
+      <Header /> {/* Cabeçalho exibido nas páginas */}
+      <Switch>
+        <Route exact path="/" component={LoginScreen} />
+        <Route path="/products" component={ProductsScreen} />
+        <Route path="/products/:id" component={ProductDetailsScreen} />
+        <Route path="/checkout" component={CheckoutScreen} />
+      </Switch>
+      <Footer /> {/* Rodapé exibido nas páginas */}
+    </Router>
+  );
+};
 
-export default App
+export default App;
